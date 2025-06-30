@@ -34,28 +34,6 @@ This university project simulates an intelligent home automation system with cli
 
 ---
 
-## 📁 Project Structure
-
-smart-home-simulator/
-├── esp32/ # ESP32 Arduino code
-│ └── smart_home.ino
-├── node-red/ # Exported Node-RED flows
-│ └── flows.json
-├── thingspeak/ # API settings or documentation (optional)
-├── images/ # Diagrams and screenshots
-│ ├── architecture.png
-│ ├── dashboard-nodered.png
-│ └── dashboard-thingspeak.png
-├── docs/ # Final project report
-│ └── DTSD_Relatorio.pdf
-└── README.md # This file
-
-yaml
-Copy
-Edit
-
----
-
 ## 🚀 How to Run
 
 1. ⚙️ Flash `esp32/smart_home.ino` to the ESP32 using the Arduino IDE
