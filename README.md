@@ -6,7 +6,7 @@ This university project simulates an intelligent home automation system with cli
 
 ---
 
-## 🔧 Components Used
+##  Components Used
 
 - ESP32
 - DHT22 sensor (indoor temperature and humidity)
@@ -20,52 +20,44 @@ This university project simulates an intelligent home automation system with cli
 
 ---
 
-## 🧠 Features
+##  Features
 
-- 📡 Publishes sensor data via **MQTT** under topics `home/sensors` and `home/status`
-- 🔁 Subscribes to MQTT control commands:
+-  Publishes sensor data via **MQTT** under topics `home/sensors` and `home/status`
+-  Subscribes to MQTT control commands:
   - `home/fan/set`
   - `home/window/set`
   - `home/light/set`
   - `home/mode` (auto/manual)
-- 📊 Real-time local dashboard using **Node-RED**
-- ☁️ Sends data to **ThingSpeak** for historical logging and analysis
-- - 📱 Remote control via MQTT-compatible apps and **Home Assistant**, integrated with **Google Home** for voice control
+-  Real-time local dashboard using **Node-RED**
+- ☁ Sends data to **ThingSpeak** for historical logging and analysis
+- -  Remote control via MQTT-compatible apps and **Home Assistant**, integrated with **Google Home** for voice control
 
 ---
 
-## 🚀 How to Run
+##  How to Run
 
-1. ⚙️ Flash `esp32/smart_home.ino` to the ESP32 using the Arduino IDE
-2. 🔗 Configure your Wi-Fi and MQTT broker IP in the code
-3. 🌐 Run Node-RED and import the `flows.json` file
-4. 🧪 Connect sensors and actuators to the correct pins:
+1.  Flash `esp32/smart_home.ino` to the ESP32 using the Arduino IDE
+2.  Configure your Wi-Fi and MQTT broker IP in the code
+3.  Run Node-RED and import the `flows.json` file
+4.  Connect sensors and actuators to the correct pins:
    - DHT22 → GPIO 4
    - DS18B20 → GPIO 5
    - PIR → GPIO 25
    - LDR → GPIO 34
    - Servo motors → GPIO 18 (window), GPIO 19 (fan)
    - LED → GPIO 14
-5. 📲 Open the Node-RED dashboard in your browser
-6. ☁️ Optionally configure a ThingSpeak channel to receive data
+      Open the Node-RED dashboard in your browser
+      Optionally configure a ThingSpeak channel to receive data
 
 ---
 
-## 🖼️ Screenshots
-
-| Node-RED Dashboard | ThingSpeak Dashboard | OLED Display |
-|--------------------|----------------------|--------------|
-| ![](images/dashboard-nodered.png) | ![](images/dashboard-thingspeak.png) | ![](images/oled.png) |
-
----
-
-## ⚠️ Limitations
+##  Limitations
 
 - No persistent actuator state in case of power loss
 - No MQTT authentication (recommended for production use)
 ---
 
-## 📚 Full Report
+## Full Report
 
 For detailed system architecture, UML diagrams, latency measurements, and design decisions, see the full report:  
 📄 [`docs/DTSD_Relatorio.pdf`](docs/DTSD_Relatorio.pdf)
