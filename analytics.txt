@@ -1,0 +1,60 @@
+channelID = YOUR_CHANNEL_ID;
+apiKey = 'YOUR_READ_API_KEY';
+channelIDAnalytic = YOUR_CHANNEL_ID;
+apiKeyAnalytic = 'YOUR_READ_API_KEY';
+
+inputLen = 100;
+% Read last 100 entries from the channel
+data = thingSpeakRead(channelID, ...
+    'Fields', [1,2,3,4,5], ...   % Adjust to match your field numbers
+    'NumPoints',inputLen , ...
+    'ReadKey', readAPIKey);
+
+% Fields:
+% data(:,1) = Luminosidade
+% data(:,2) = Temp interna
+% data(:,3) = Temp externa
+% data(:,4) = Presença
+% data(:,5) = Humidade
+
+# Remove Outliers
+for i = 1:size(data,2)
+    col = data(:,i);
+    mu = mean(col, 'omitnan'); # omitnan ignores os NaN
+    sigma = std(col, 'omitnan'); # omitnan ignores os NaN
+
+    isOutlier = abs(col - mu) > 3*sigma;
+    col(isOutlier) = NaN;
+    data2Send(:,i) = col;
+end
+
+#Predictions
+outputLen = 10; % Prever os próximos 10 pontos
+
+predictions = NaN(outputLen, 3);
+
+offset = [0 0 2];
+for j = 1:size(data2Send - 2, 2)
+    campo = data2Send(:, j + offset[j]);  % Coluna de dados de uma variável (ex: luminosidade)
+
+    % Preparar dados para regressão linear
+    X = [];
+    Y = [];
+
+    for i = 1:(length(campo) - inputLen - outputLen)
+        X = [X; campo(i:i + inputLen - 1)'];
+        Y = [Y; campo(i + inputLen:i + inputLen + outputLen - 1)'];
+    end
+
+    mdl = fitlm(X, Y);
+
+    lastInput = campo(end - inputLen + 1:end)';
+    prediction = predict(mdl, lastInput);
+
+    predictions(:, j +  5) = prediction;
+end
+
+thingSpeakWrite(channelIDAnalytic, ...
+    'Fields', [1,2,3,4,5], ...
+    'Values', [avgTempInt, avgHumidity], ...
+    'WriteKey', apiKeyAnalytic);
