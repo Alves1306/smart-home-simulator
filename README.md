@@ -36,7 +36,7 @@ This university project simulates an intelligent home automation system with cli
 
 ##  How to Run
 
-1.  Flash `esp32/smart_home.ino` to the ESP32 using the Arduino IDE
+1.  Flash `smart_home.ino` to the ESP32 using the Arduino IDE
 2.  Configure your Wi-Fi and MQTT broker IP in the code
 3.  Run Node-RED and import the `flows.json` file
 4.  Connect sensors and actuators to the correct pins:
@@ -60,7 +60,7 @@ This university project simulates an intelligent home automation system with cli
 ## Full Report
 
 For detailed system architecture, UML diagrams, latency measurements, and design decisions, see the full report:  
-📄 [`docs/DTSD_Relatorio.pdf`](docs/DTSD_Relatorio.pdf)
+📄 [`DTSD_Relatorio.pdf`](DTSD_Relatorio.pdf)
 
 ---
 
