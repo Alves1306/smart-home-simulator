@@ -30,7 +30,7 @@ This university project simulates an intelligent home automation system with cli
   - `home/mode` (auto/manual)
 - 📊 Real-time local dashboard using **Node-RED**
 - ☁️ Sends data to **ThingSpeak** for historical logging and analysis
-- 📱 Remote control via MQTT apps or Home Assistant (experimental)
+- - 📱 Remote control via MQTT-compatible apps and **Home Assistant**, integrated with **Google Home** for voice control
 
 ---
 
@@ -63,7 +63,6 @@ This university project simulates an intelligent home automation system with cli
 
 - No persistent actuator state in case of power loss
 - No MQTT authentication (recommended for production use)
-- 📱 Remote control via MQTT-compatible apps and **Home Assistant**, integrated with **Google Home** for voice control
 ---
 
 ## 📚 Full Report
